@@ -24056,21 +24056,59 @@ function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Re
 
 function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 var App = /*#__PURE__*/function (_Component) {
   _inherits(App, _Component);
 
   var _super = _createSuper(App);
 
   function App() {
+    var _this;
+
     _classCallCheck(this, App);
 
-    return _super.apply(this, arguments);
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    _this = _super.call.apply(_super, [this].concat(args));
+
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      artistQuery: ''
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "updateArtistQuery", function (event) {
+      console.log('event.target.value', event.target.value);
+
+      _this.setState({
+        artistQuery: event.target.value
+      });
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "handleKeyPress", function (event) {
+      if (event.key === 'Enter') {
+        _this.searchArtist();
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "searchArtist", function () {
+      console.log('this.state', _this.state);
+    });
+
+    return _this;
   }
 
   _createClass(App, [{
     key: "render",
     value: function render() {
-      return /*#__PURE__*/_react.default.createElement("div", null, "React App");
+      return /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("h2", null, "Music Master"), /*#__PURE__*/_react.default.createElement("input", {
+        onChange: this.updateArtistQuery,
+        onKeyPress: this.handleKeyPress,
+        placeholder: "Search for Artist"
+      }), /*#__PURE__*/_react.default.createElement("button", {
+        onClick: this.searchArtist
+      }, "Search"));
     }
   }]);
 
