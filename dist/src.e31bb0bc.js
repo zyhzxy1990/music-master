@@ -24058,6 +24058,7 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//rrrr
 var API_ADDRESS = 'https://spotify-api-wrapper.appspot.com';
 
 var App = /*#__PURE__*/function (_Component) {
@@ -24100,6 +24101,7 @@ var App = /*#__PURE__*/function (_Component) {
       }).then(function (json) {
         if (json.artists.total > 0) {
           var artist = json.artists.items[0];
+          console.log('artist', artist);
 
           _this.setState({
             artist: artist
