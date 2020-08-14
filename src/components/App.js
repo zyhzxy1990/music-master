@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//add remark 11111
+
 const API_ADDRESS = 'https://spotify-api-wrapper.appspot.com';
 class App extends Component{
     state = {artistQuery : '', artist:null, tracks:[]};
@@ -20,7 +20,6 @@ class App extends Component{
         .then(json => {
             if(json.artists.total > 0){
                 const artist = json.artists.items[0];
-                console.log('artist',artist);
                 this.setState({artist});
 
                 fetch(`${API_ADDRESS}/artist/${artist.id}/top-tracks`)
